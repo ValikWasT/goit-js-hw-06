@@ -12,25 +12,25 @@ const refs = {
 
 let firstWidth = 20;
 let firstHeight = 20;
-let amount = 0;
-const createBoxes = (amount) => {
-  for (let i = 1; i <= amount; i += 1) {
+
+refs.createBtn.addEventListener("click", () => {
+  for (let i = 1; i <= refs.input.value; i += 1) {
     firstWidth += 10;
     firstHeight += 10;
     const newDiv = document.createElement("div");
     newDiv.style.width = `${firstWidth}px`;
     newDiv.style.height = `${firstHeight}px`;
     newDiv.style.backgroundColor = getRandomHexColor();
-    refs.boxes.append(newDiv);
+    newDiv.classList.add("for-remove");
+    createdDivs.push(newDiv);
+    // refs.boxes.append(newDiv);
   }
-};
-refs.input.addEventListener("input", (event) => {
-  const secondAmount = 0;
-  console.log(event.currentTarget.value);
-  secondAmount = event.currentTarget.value;
-  return secondAmount;
+  refs.boxes.append(...createdDivs);
 });
 
-refs.createBtn.addEventListener("click", createBoxes(amount));
-// console.log(createBoxes(10));
-// const numbers = 10;
+// console.log(refs.boxesToRemove);
+// const boxesToRemove = refs.boxes.children;
+refs.destroyBtn.addEventListener("click", () => {
+  const boxesToRemove = document.querySelectorAll(".for-remove");
+  boxesToRemove.remove();
+});
