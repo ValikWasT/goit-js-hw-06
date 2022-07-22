@@ -31,6 +31,9 @@ refs.createBtn.addEventListener("click", () => {
 // console.log(refs.boxesToRemove);
 // const boxesToRemove = refs.boxes.children;
 refs.destroyBtn.addEventListener("click", () => {
-  const boxesToRemove = document.querySelectorAll(".for-remove");
-  boxesToRemove.remove();
+  refs.boxes.remove();
+  const containerRef = document.querySelector(".main-container");
+  const newBox = document.createElement("div");
+  newBox.id = "#boxes";
+  containerRef.append(newBox);
 });
